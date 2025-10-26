@@ -47,6 +47,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        tech: "hsl(var(--tech))",
+        sports: "hsl(var(--sports))",
+        politics: "hsl(var(--politics))",
+        business: "hsl(var(--business))",
+        entertainment: "hsl(var(--entertainment))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
