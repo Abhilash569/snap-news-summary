@@ -5,6 +5,7 @@ import { NewsHeader } from "@/components/NewsHeader";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface NewsArticle {
   title: string;
@@ -18,6 +19,7 @@ interface NewsArticle {
 const Index = () => {
   const [articles, setArticles] = useState<NewsArticle[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [viewMode, setViewMode] = useState<"headlines" | "topics">("headlines");
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
 
@@ -74,6 +76,19 @@ const Index = () => {
       
       <main className="container mx-auto px-6 py-8">
         <div className="space-y-8">
+          <div className="flex items-center gap-4">
+            <label className="text-sm font-medium">View by:</label>
+            <Select value={viewMode} onValueChange={(value: "headlines" | "topics") => setViewMode(value)}>
+              <SelectTrigger className="w-[200px]">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="headlines">Headlines</SelectItem>
+                <SelectItem value="topics">Topics</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          
           <CategoryTabs 
             selectedCategory={selectedCategory} 
             onCategoryChange={setSelectedCategory}
