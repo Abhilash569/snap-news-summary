@@ -6,6 +6,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
+// Explicitly importing app and index styles
+import "./App.css";
+import "./index.css";
+
 const queryClient = new QueryClient();
 
 const App = () => (

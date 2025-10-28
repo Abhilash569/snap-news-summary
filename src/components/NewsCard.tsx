@@ -5,25 +5,37 @@ import { Calendar, ExternalLink } from "lucide-react";
 interface NewsCardProps {
   title: string;
   summary: string;
-  category: string;
-  source: string;
+  category?: string;
+  source: string | { id?: string; name: string };
   url: string;
   publishedAt: string;
+  image?: string;
+  fullText?: string;
 }
 
 const categoryColors: Record<string, string> = {
-  tech: "bg-tech text-white",
+  technology: "bg-tech text-white",
   sports: "bg-sports text-white",
-  politics: "bg-politics text-white",
+  general: "bg-muted text-foreground",
   business: "bg-business text-white",
   entertainment: "bg-entertainment text-white",
 };
 
-export const NewsCard = ({ title, summary, category, source, url, publishedAt }: NewsCardProps) => {
+export const NewsCard = ({ title, summary, category = 'general', source, url, publishedAt, image }: NewsCardProps) => {
   const categoryColor = categoryColors[category.toLowerCase()] || "bg-muted";
   
   return (
     <Card className="group overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 animate-fade-in">
+      {image ? (
+        <div className="w-full h-44 md:h-48 overflow-hidden">
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-full object-cover group-hover:scale-105 transform transition-transform duration-300"
+          />
+        </div>
+      ) : null}
+
       <div className="p-6 space-y-4">
         <div className="flex items-start justify-between gap-4">
           <div className="flex-1 space-y-2">
@@ -42,7 +54,13 @@ export const NewsCard = ({ title, summary, category, source, url, publishedAt }:
         
         <div className="flex items-center justify-between pt-4 border-t">
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <span className="font-medium">{source}</span>
+            <span className="font-medium">
+              {typeof source === 'string' ? (
+                source
+              ) : (
+                <a href={url} target="_blank" rel="noopener noreferrer" className="hover:underline">{source.name}</a>
+              )}
+            </span>
             <div className="flex items-center gap-1">
               <Calendar className="h-4 w-4" />
               <span>{new Date(publishedAt).toLocaleDateString()}</span>

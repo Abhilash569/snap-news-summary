@@ -1,5 +1,12 @@
 # Welcome to your Lovable project
 
+## Recent Updates
+- Enhanced UI with smooth transitions and hover effects
+- Added topic-based news grouping with representative images
+- Improved responsive grid layout with better spacing
+- Added interactive category tabs with visual feedback
+- Beautified overall presentation with shadow effects and transitions
+
 ## Project info
 
 **URL**: https://lovable.dev/projects/59ab414e-dd60-4de4-9f19-ee9ffa73d904
