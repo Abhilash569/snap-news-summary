@@ -1,0 +1,18 @@
+/* Custom styles */
+.article-card {
+    transition: transform 0.2s;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Add responsive text size */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.25rem;
+    }
+    p {
+        font-size: 0.875rem;
+    }
+}
